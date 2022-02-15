@@ -24,14 +24,8 @@ describe('simple database', () => {
       contents: 'file contents'
     };
     await db.save(testObj);
-    console.log('testobj', testObj);
-    //console.log('testnewFile', newFile);
-    //console.log('this', this);
-    console.log('id', testObj.id);
-    const stringTestObj = JSON.stringify(testObj);
-    const newObject = await db.get(stringTestObj.id);
-    console.log('testnewObj', newObject);
-    expect(newObject).toEqual({ 
+    const file = await db.get(testObj.id);
+    expect(file).toEqual({ 
       id: expect.any(String),
       contents: 'file contents' });      
   });
